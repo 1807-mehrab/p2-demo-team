@@ -1,16 +1,17 @@
 package com.revature.review.beans;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 public class Cave {
+
+	@Override
+	public String toString() {
+		return "Cave [id=" + id + ", name=" + name + ", max_bears=" + max_bears + "]";
+	}
 
 	@Id
 	private int id;
@@ -21,16 +22,11 @@ public class Cave {
 	@Column
 	private int max_bears;
 
-	@OneToMany(cascade = { CascadeType.ALL })
-	@JoinColumn
-	private Set<Bear> bears;
-
-	public Cave(int id, String name, int max_bears, Set<Bear> bears) {
+	public Cave(int id, String name, int max_bears) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.max_bears = max_bears;
-		this.bears = bears;
 	}
 
 	public Cave() {
@@ -61,18 +57,4 @@ public class Cave {
 	public void setMax_bears(int max_bears) {
 		this.max_bears = max_bears;
 	}
-
-	public Set<Bear> getBears() {
-		return bears;
-	}
-
-	public void setBears(Set<Bear> bears) {
-		this.bears = bears;
-	}
-
-	@Override
-	public String toString() {
-		return "Cave [id=" + id + ", name=" + name + ", max_bears=" + max_bears + ", bears=" + bears + "]";
-	}
-
 }
