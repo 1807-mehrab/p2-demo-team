@@ -1,5 +1,13 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
 {{outlet}}
+
+<ul>
+    {{#each model as |park|}}
+        <li>{{park.name}}</li>
+    {{/each}}
+</ul>
+
+<div>
+    Read Caves
+    <button {{action 'getCaveById'}}>Get Cave 1</button>
+
+</div>
